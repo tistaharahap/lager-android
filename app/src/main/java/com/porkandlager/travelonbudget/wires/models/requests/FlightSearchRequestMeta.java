@@ -22,4 +22,23 @@ public class FlightSearchRequestMeta {
         return currency;
     }
 
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public String getBudget() {
+        return budget;
+    }
+
+    public void setBudget(String budget) {
+        this.budget = budget;
+    }
+
+    public Passengers getPassengers() {
+        return passengers;
+    }
+
+    public void setPassengers(Passengers passengers) {
+        this.passengers = passengers;
+    }
 }

@@ -5,34 +5,38 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.NavUtils;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.MenuItem;
-import android.support.v4.app.NavUtils;
 
 import com.porkandlager.travelonbudget.R;
+import com.porkandlager.travelonbudget.wires.adapters.SearchResultAdapter;
+import com.porkandlager.travelonbudget.wires.models.acta.Acta;
+import com.porkandlager.travelonbudget.wires.models.acta.ActaObj;
+import com.porkandlager.travelonbudget.wires.models.beans.Passengers;
+import com.porkandlager.travelonbudget.wires.models.requests.FlightSearchRequestMeta;
+import com.porkandlager.travelonbudget.wires.models.responses.FlightSearchWithBudgetResponse;
+import com.porkandlager.travelonbudget.wires.retrofitter.ApiService;
 
-/**
- * An example full-screen activity that shows and hides the system UI (i.e.
- * status bar and navigation/system bar) with user interaction.
- */
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+
 public class SearchResultActivity extends Activity {
-    /**
-     * Whether or not the system UI should be auto-hidden after
-     * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
-     */
+    @BindView(R.id.search_result_recycler_view) RecyclerView searchResultRecyclerView;
+
+    private SearchResultAdapter searchResultAdapter;
+
     private static final boolean AUTO_HIDE = true;
 
-    /**
-     * If {@link #AUTO_HIDE} is set, the number of milliseconds to wait after
-     * user interaction before hiding the system UI.
-     */
     private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
 
-    /**
-     * Some older devices needs a small delay between UI widget updates
-     * and a change of the status and navigation bar.
-     */
+
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler();
     private View mContentView;
@@ -92,6 +96,8 @@ public class SearchResultActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_search_result);
+        ButterKnife.bind(this);
+
         ActionBar actionBar = getActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -110,10 +116,51 @@ public class SearchResultActivity extends Activity {
             }
         });
 
-        // Upon interacting with UI controls, delay any scheduled hide()
-        // operations to prevent the jarring behavior of controls going away
-        // while interacting with the UI.
-        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+        Acta<FlightSearchRequestMeta> acta = new Acta<>();
+
+        ActaObj actor = new ActaObj();
+        actor.setId("@tista");
+        actor.setKind("person");
+
+        acta.setSubject(actor);
+
+        ActaObj obj = new ActaObj();
+        obj.setId("IDR-2500000");
+        obj.setKind("currency-number");
+
+        acta.setObject(obj);
+
+        acta.setAction("flight-search-with-budget");
+
+        Passengers passengers = new Passengers();
+        passengers.setAdults(1);
+
+        FlightSearchRequestMeta meta = new FlightSearchRequestMeta();
+        meta.setBudget("2500000");
+        meta.setCurrency("IDR");
+        meta.setPassengers(passengers);
+
+        acta.setMeta(meta);
+
+        Observable<FlightSearchWithBudgetResponse> flightSearch =
+                ApiService.INSTANCE.searchFlights(acta);
+        flightSearch.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::initializeRecyclerView);
+    }
+
+    private void initializeRecyclerView(FlightSearchWithBudgetResponse response) {
+        searchResultRecyclerView.setHasFixedSize(true);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+        searchResultRecyclerView.setLayoutManager(linearLayoutManager);
+
+        searchResultAdapter = new SearchResultAdapter(this);
+        searchResultAdapter.setFlights(response.getFlights());
+
+        searchResultRecyclerView.setAdapter(searchResultAdapter);
     }
 
     @Override

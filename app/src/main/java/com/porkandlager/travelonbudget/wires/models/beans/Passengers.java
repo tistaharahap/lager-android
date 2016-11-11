@@ -9,13 +9,13 @@ import com.google.gson.annotations.SerializedName;
 public class Passengers {
 
     @SerializedName("adults")
-    private int adults;
+    private int adults = 0;
 
     @SerializedName("children")
-    private int children;
+    private int children = 0;
 
     @SerializedName("infants")
-    private int infants;
+    private int infants = 0;
 
     public int getAdults() {
         return adults;

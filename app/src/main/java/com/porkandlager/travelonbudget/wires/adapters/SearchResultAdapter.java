@@ -50,7 +50,9 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
         holder.searchResultPrice.setText(String.format("IDR %s",
                 NumberFormat.getInstance().format(flight.getCheapestPrice())));
 
-        Glide.with(context).load(flight.getContent().getPictureUrl())
+        Glide.with(context)
+                .load(flight.getContent().getPictureUrl())
+                .centerCrop()
                 .into(holder.searchResultImage);
     }
 

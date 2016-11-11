@@ -28,4 +28,27 @@ public class Acta<T> {
         return meta;
     }
 
+    public void setSubject(ActaObj subject) {
+        this.subject = subject;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+
+    public ActaObj getObject() {
+        return object;
+    }
+
+    public void setObject(ActaObj object) {
+        this.object = object;
+    }
+
+    public void setMeta(T meta) {
+        this.meta = meta;
+    }
 }

@@ -22,4 +22,11 @@ public class ActaObj {
         return kind;
     }
 
+    public void setId(String id) {
+        Id = id;
+    }
+
+    public void setKind(String kind) {
+        this.kind = kind;
+    }
 }

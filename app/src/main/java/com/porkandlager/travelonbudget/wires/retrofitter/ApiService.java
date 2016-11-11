@@ -4,9 +4,8 @@ import com.porkandlager.travelonbudget.wires.models.acta.Acta;
 import com.porkandlager.travelonbudget.wires.models.requests.FlightSearchRequestMeta;
 import com.porkandlager.travelonbudget.wires.models.responses.FlightSearchWithBudgetResponse;
 
-import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Retrofit;
+import rx.Observable;
 
 /**
  * Created by tista on 11/12/16.
@@ -21,9 +20,8 @@ public enum ApiService {
         this.travelOnBudgetService = retrofit.create(TravelOnBudgetService.class);
     }
 
-    public void searchFlights(Acta<FlightSearchRequestMeta> acta, Callback<FlightSearchWithBudgetResponse> callback) {
-        Call<FlightSearchWithBudgetResponse> call = travelOnBudgetService.getFlights(acta);
-        call.enqueue(callback);
+    public Observable<FlightSearchWithBudgetResponse> searchFlights(Acta<FlightSearchRequestMeta> acta) {
+        return travelOnBudgetService.getFlights(acta);
     }
 
 }

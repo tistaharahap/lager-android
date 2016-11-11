@@ -45,7 +45,10 @@ public class HomePresenterImpl implements HomePresenter {
         if(actionBar != null) {
             actionBar.hide();
         }
-        controlsView.setVisibility(View.GONE);
+
+        if(controlsView != null) {
+            controlsView.setVisibility(View.GONE);
+        }
     }
 
 }

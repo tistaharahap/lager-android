@@ -4,8 +4,9 @@ import com.porkandlager.travelonbudget.wires.models.acta.Acta;
 import com.porkandlager.travelonbudget.wires.models.requests.FlightSearchRequestMeta;
 import com.porkandlager.travelonbudget.wires.models.responses.FlightSearchWithBudgetResponse;
 
-import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.POST;
+import rx.Observable;
 
 /**
  * Created by tista on 11/12/16.
@@ -13,7 +14,7 @@ import retrofit2.http.POST;
 
 public interface TravelOnBudgetService {
 
-    @POST("/events")
-    Call<FlightSearchWithBudgetResponse> getFlights(Acta<FlightSearchRequestMeta> acta);
+    @POST("events")
+    Observable<FlightSearchWithBudgetResponse> getFlights(@Body Acta<FlightSearchRequestMeta> acta);
 
 }

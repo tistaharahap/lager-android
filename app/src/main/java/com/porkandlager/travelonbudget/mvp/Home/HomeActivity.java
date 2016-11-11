@@ -32,6 +32,8 @@ public class HomeActivity extends AppCompatActivity implements HomeView,
 
         // Budget Slider
         ((SeekBar) findViewById(R.id.budget_slider)).setOnSeekBarChangeListener(this);
+
+        presenter.makeFullScreen(getSupportActionBar(), mControlsView);
     }
 
     @OnClick(R.id.go_button) void goButtonClicked() {
@@ -42,7 +44,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView,
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
-        presenter.makeFullScreen(getSupportActionBar(), mControlsView);
+
     }
 
     @Override
