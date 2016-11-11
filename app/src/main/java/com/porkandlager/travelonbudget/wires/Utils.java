@@ -1,4 +1,4 @@
-package com.porkandlager.travelonbudget;
+package com.porkandlager.travelonbudget.wires;
 
 import android.util.Log;
 

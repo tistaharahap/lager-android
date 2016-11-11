@@ -1,5 +1,6 @@
-package com.porkandlager.travelonbudget.com.porkandlager.travelonbudget.Home;
+package com.porkandlager.travelonbudget.mvp.Home;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,14 +18,14 @@ public class HomeActivity extends AppCompatActivity implements HomeView,
 
     private HomePresenter presenter;
 
-    @BindView(R.id.fullscreen_content_controls) private View mControlsView;
-    @BindView(R.id.budget) private TextView mBudgetText;
+    @BindView(R.id.fullscreen_content_controls) View mControlsView;
+    @BindView(R.id.budget) TextView mBudgetText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
 
         presenter = new HomePresenterImpl(this);
@@ -34,7 +35,7 @@ public class HomeActivity extends AppCompatActivity implements HomeView,
     }
 
     @OnClick(R.id.go_button) void goButtonClicked() {
-        presenter.onGoButtonClicked(mBudgetText);
+        presenter.onGoButtonClicked(this, mBudgetText);
     }
 
     @Override
@@ -59,4 +60,8 @@ public class HomeActivity extends AppCompatActivity implements HomeView,
 
     }
 
+    @Override
+    public Activity getActivity() {
+        return this;
+    }
 }

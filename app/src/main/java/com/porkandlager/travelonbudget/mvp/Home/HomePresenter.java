@@ -1,4 +1,4 @@
-package com.porkandlager.travelonbudget.com.porkandlager.travelonbudget.Home;
+package com.porkandlager.travelonbudget.mvp.Home;
 
 import android.support.v7.app.ActionBar;
 import android.view.View;
@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public interface HomePresenter {
 
-    void onGoButtonClicked(TextView budgetTextView);
+    void onGoButtonClicked(HomeView homeView, TextView budgetTextView);
 
     void onBudgetSliderChanged(TextView budgetTextView, int budget);
 

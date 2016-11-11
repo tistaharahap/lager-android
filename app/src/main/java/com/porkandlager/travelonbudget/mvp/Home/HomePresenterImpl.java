@@ -1,10 +1,13 @@
-package com.porkandlager.travelonbudget.com.porkandlager.travelonbudget.Home;
+package com.porkandlager.travelonbudget.mvp.Home;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.porkandlager.travelonbudget.Utils;
+import com.porkandlager.travelonbudget.wires.Constants;
+import com.porkandlager.travelonbudget.mvp.SearchResult.SearchResultActivity;
+import com.porkandlager.travelonbudget.wires.Utils;
 
 import java.text.NumberFormat;
 
@@ -23,8 +26,13 @@ public class HomePresenterImpl implements HomePresenter {
     }
 
     @Override
-    public void onGoButtonClicked(TextView budgetTextView) {
+    public void onGoButtonClicked(HomeView homeView, TextView budgetTextView) {
         Utils.LogV("GO Button Clicked, value: " + budgetTextView.getText());
+
+        Intent intent = new Intent(homeView.getActivity(), SearchResultActivity.class);
+        intent.putExtra(Constants.BUDGET_VALUE, budgetTextView.getText());
+
+        homeView.getActivity().startActivity(intent);
     }
 
     @Override

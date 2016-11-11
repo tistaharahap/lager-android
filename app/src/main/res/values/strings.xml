@@ -7,4 +7,8 @@
     <string name="whats_your_budget">What\'s your budget?</string>
     <string name="budget_default_text">IDR 1.500.000</string>
     <string name="go">Go!</string>
+
+    <string name="title_activity_search_result">SearchResultActivity</string>
+    <string name="search_result_destination_default">Destination</string>
+    <string name="search_result_price_default">IDR 1,000,000</string>
 </resources>
