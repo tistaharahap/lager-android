@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Travel On Budget</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="whats_your_budget">What\'s your budget?</string>
+    <string name="budget_default_text">IDR 1.500.000</string>
+    <string name="go">Go!</string>
+</resources>
