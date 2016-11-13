@@ -24,4 +24,8 @@ public enum ApiService {
         return travelOnBudgetService.getFlights(acta);
     }
 
+    public static ApiService getInstance() {
+        return INSTANCE;
+    }
+
 }

@@ -18,4 +18,8 @@ public class Utils {
         Log.v(TAG, message);
     }
 
+    public static void LogD(String message) {
+        Log.d(Utils.TAG, message);
+    }
+
 }

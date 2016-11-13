@@ -8,8 +8,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class Acta<T> {
 
-    @SerializedName("subject")
-    private ActaObj subject;
+    @SerializedName("actor")
+    private ActaObj actor;
 
     @SerializedName("action")
     private String action;
@@ -20,16 +20,8 @@ public class Acta<T> {
     @SerializedName("meta")
     private T meta;
 
-    public ActaObj getSubject() {
-        return subject;
-    }
-
     public T getMeta() {
         return meta;
-    }
-
-    public void setSubject(ActaObj subject) {
-        this.subject = subject;
     }
 
     public String getAction() {
@@ -50,5 +42,13 @@ public class Acta<T> {
 
     public void setMeta(T meta) {
         this.meta = meta;
+    }
+
+    public ActaObj getActor() {
+        return actor;
+    }
+
+    public void setActor(ActaObj actor) {
+        this.actor = actor;
     }
 }

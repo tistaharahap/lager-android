@@ -11,4 +11,6 @@
     <string name="title_activity_search_result">SearchResultActivity</string>
     <string name="search_result_destination_default">Destination</string>
     <string name="search_result_price_default">IDR 1,000,000</string>
+
+    <string name="widget_loading_message">Searching flights..</string>
 </resources>

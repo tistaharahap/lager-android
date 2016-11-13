@@ -13,6 +13,8 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.porkandlager.travelonbudget.R;
+import com.porkandlager.travelonbudget.wires.Constants;
+import com.porkandlager.travelonbudget.wires.Utils;
 import com.porkandlager.travelonbudget.wires.adapters.SearchResultAdapter;
 import com.porkandlager.travelonbudget.wires.models.acta.Acta;
 import com.porkandlager.travelonbudget.wires.models.acta.ActaObj;
@@ -70,12 +72,7 @@ public class SearchResultActivity extends Activity {
         }
     };
     private boolean mVisible;
-    private final Runnable mHideRunnable = new Runnable() {
-        @Override
-        public void run() {
-            hide();
-        }
-    };
+    private final Runnable mHideRunnable = () -> hide();
     /**
      * Touch listener to use for in-layout UI controls to delay hiding the
      * system UI. This is to prevent the jarring behavior of controls going away
@@ -107,14 +104,13 @@ public class SearchResultActivity extends Activity {
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
-
         // Set up the user interaction to manually show or hide the system UI.
-        mContentView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toggle();
-            }
-        });
+        mContentView.setOnClickListener(view -> toggle());
+
+        String budget = getIntent().getStringExtra(Constants.BUDGET_VALUE)
+                .replace(".", "")
+                .replace(",", "")
+                .replace("IDR ", "");
 
         Acta<FlightSearchRequestMeta> acta = new Acta<>();
 
@@ -122,10 +118,10 @@ public class SearchResultActivity extends Activity {
         actor.setId("@tista");
         actor.setKind("person");
 
-        acta.setSubject(actor);
+        acta.setActor(actor);
 
         ActaObj obj = new ActaObj();
-        obj.setId("IDR-2500000");
+        obj.setId("IDR-" + budget);
         obj.setKind("currency-number");
 
         acta.setObject(obj);
@@ -136,20 +132,28 @@ public class SearchResultActivity extends Activity {
         passengers.setAdults(1);
 
         FlightSearchRequestMeta meta = new FlightSearchRequestMeta();
-        meta.setBudget("2500000");
+        meta.setBudget(budget);
         meta.setCurrency("IDR");
         meta.setPassengers(passengers);
 
         acta.setMeta(meta);
 
         Observable<FlightSearchWithBudgetResponse> flightSearch =
-                ApiService.INSTANCE.searchFlights(acta);
+                ApiService.getInstance().searchFlights(acta);
         flightSearch.subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
+                .onErrorReturn(throwable -> {
+                    Utils.LogE(throwable.getMessage());
+                    return null;
+                })
                 .subscribe(this::initializeRecyclerView);
     }
 
     private void initializeRecyclerView(FlightSearchWithBudgetResponse response) {
+        if(response == null) {
+            Utils.LogE("Null flight search response");
+            return;
+        }
         searchResultRecyclerView.setHasFixedSize(true);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
