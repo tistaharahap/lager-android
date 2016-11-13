@@ -8,6 +8,7 @@ import android.app.Activity;
 
 public interface HomeView {
 
+    void makeFullscreen();
     Activity getActivity();
 
 }
