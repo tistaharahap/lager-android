@@ -12,6 +12,7 @@ public interface SearchResultView {
 
     void initializeRecyclerView(FlightSearchWithBudgetResponse response);
     void makeFullscreen();
+    String humanizeDate(String date);
     Activity getActivity();
 
 }

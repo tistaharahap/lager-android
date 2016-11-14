@@ -58,7 +58,7 @@
             android:layout_centerHorizontal="true"
             android:progressDrawable="@drawable/apptheme_scrubber_progress_horizontal_holo_dark"
             android:thumb="@drawable/apptheme_scrubber_control_selector_holo_dark"
-            android:max="5000000"
+            android:max="8000000"
             android:progress="1500000" />
 
         <at.markushi.ui.CircleButton

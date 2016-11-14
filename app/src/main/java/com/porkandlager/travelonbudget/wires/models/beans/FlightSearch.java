@@ -52,4 +52,12 @@ public class FlightSearch {
     public Content getContent() {
         return content;
     }
+
+    public FlightDates getFlightDates() {
+        return flightDates;
+    }
+
+    public void setFlightDates(FlightDates flightDates) {
+        this.flightDates = flightDates;
+    }
 }

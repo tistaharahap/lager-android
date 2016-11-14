@@ -9,6 +9,7 @@ import com.porkandlager.travelonbudget.wires.retrofitter.ApiService;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -28,9 +29,9 @@ class SearchResultInteractorImpl implements SearchResultInteractor {
         Acta<FlightSearchRequestMeta> acta = buildActaObject(budget);
         Observable<FlightSearchWithBudgetResponse> flightSearch =
                 ApiService.getInstance().searchFlights(acta);
-        flightSearch.subscribeOn(Schedulers.newThread())
+        flightSearch.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .onErrorResumeNext(throwable -> null)
+                .onErrorReturn(throwable -> null)
                 .subscribe(this::onSearchResultSuccess);
     }
 

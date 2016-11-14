@@ -2,6 +2,7 @@ package com.porkandlager.travelonbudget.mvp.SearchResult;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -9,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.porkandlager.travelonbudget.R;
 import com.porkandlager.travelonbudget.wires.Constants;
@@ -22,6 +24,9 @@ import butterknife.ButterKnife;
 public class SearchResultActivity extends Activity implements SearchResultView {
     @BindView(R.id.search_result_recycler_view) RecyclerView searchResultRecyclerView;
     @BindView(R.id.fullscreen_content) View mContentView;
+    @BindView(R.id.search_context_text) TextView searchContextText;
+
+    private String budget;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +39,7 @@ public class SearchResultActivity extends Activity implements SearchResultView {
 
         SearchResultPresenter presenter = new SearchResultPresenterImpl(this);
 
-        String budget = getIntent().getStringExtra(Constants.BUDGET_VALUE);
+        budget = getIntent().getStringExtra(Constants.BUDGET_VALUE);
         presenter.searchFlights(budget);
     }
 
@@ -55,6 +60,19 @@ public class SearchResultActivity extends Activity implements SearchResultView {
         searchResultAdapter.setFlights(response.getFlights());
 
         searchResultRecyclerView.setAdapter(searchResultAdapter);
+
+        String outboundDate = humanizeDate(response.getFlights().get(0)
+                .getFlightDates()
+                .getOutbound());
+        String inboundDate = humanizeDate(response.getFlights().get(0)
+                .getFlightDates()
+                .getInbound());
+
+        String searchContextTextContent = String.format("%s - %s trip for %s",
+                outboundDate, inboundDate, budget);
+        searchContextText.setText(searchContextTextContent);
+        searchContextText.setPaintFlags(searchContextText.getPaintFlags()
+                | Paint.UNDERLINE_TEXT_FLAG);
     }
 
     @Override
@@ -86,6 +104,53 @@ public class SearchResultActivity extends Activity implements SearchResultView {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.hide();
         }
+    }
+
+    @Override
+    public String humanizeDate(String date) {
+        String[] pieces = date.split("-");
+
+        String shortMonth = "";
+        switch(Integer.valueOf(pieces[1])) {
+            case 1:
+                shortMonth = "Jan";
+                break;
+            case 2:
+                shortMonth = "Feb";
+                break;
+            case 3:
+                shortMonth = "Mar";
+                break;
+            case 4:
+                shortMonth = "Apr";
+                break;
+            case 5:
+                shortMonth = "May";
+                break;
+            case 6:
+                shortMonth = "Jun";
+                break;
+            case 7:
+                shortMonth = "Jul";
+                break;
+            case 8:
+                shortMonth = "Aug";
+                break;
+            case 9:
+                shortMonth = "Sep";
+                break;
+            case 10:
+                shortMonth = "Oct";
+                break;
+            case 11:
+                shortMonth = "Nov";
+                break;
+            case 12:
+                shortMonth = "Dec";
+                break;
+        }
+
+        return String.format("%s %s", shortMonth, pieces[2]);
     }
 
     @Override
