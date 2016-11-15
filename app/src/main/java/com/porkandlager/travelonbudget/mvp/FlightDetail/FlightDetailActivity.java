@@ -88,9 +88,7 @@ public class FlightDetailActivity extends Activity implements FlightDetailView {
                         flightDetail.getFlightDates().getOutboundFormattedShortMonthYear(),
                         flightDetail.getFlightDates().getInboundFormattedShortMonthYear()));
 
-        bookNowButton.setOnClickListener(view -> {
-            presenter.bookNowClicked();
-        });
+        bookNowButton.setOnClickListener(view -> presenter.bookNowClicked());
     }
 
     @Override

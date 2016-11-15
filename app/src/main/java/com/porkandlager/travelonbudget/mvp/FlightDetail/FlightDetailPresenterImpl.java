@@ -1,10 +1,10 @@
 package com.porkandlager.travelonbudget.mvp.FlightDetail;
 
 import android.content.Intent;
-import android.net.Uri;
 
 import com.porkandlager.travelonbudget.wires.models.beans.FlightSearch;
 import com.porkandlager.travelonbudget.wires.models.responses.FlightDetailImageSearchResponse;
+import com.tfc.webviewer.ui.WebViewerActivity;
 
 /**
  * Created by tista on 11/15/16.
@@ -31,8 +31,10 @@ class FlightDetailPresenterImpl implements FlightDetailPresenter {
 
     @Override
     public void bookNowClicked() {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(flightDetail.getReferralLink()));
+        Intent intent = new Intent(flightDetailView.getActivity(),
+                WebViewerActivity.class);
+        intent.putExtra(WebViewerActivity.EXTRA_URL,
+                flightDetail.getReferralLink());
         flightDetailView.getActivity().startActivity(intent);
     }
 
