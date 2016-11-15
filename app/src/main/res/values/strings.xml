@@ -17,8 +17,10 @@
 
     <string name="title_activity_flight_detail">FlightDetailActivity</string>
     <string name="flight_detail_overview">Overview</string>
-    <string name="flight_detail_places">Places To Go</string>
+    <string name="flight_detail_places">Photos</string>
     <string name="book_now_default_price">IDR 0.0</string>
     <string name="book_now_default_dates">18 Nov - 20 Nov</string>
     <string name="book_now_button_text">Book Now</string>
+
+    <string name="title_activity_photo_viewer">PhotoViewerActivity</string>
 </resources>

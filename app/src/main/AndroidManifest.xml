@@ -44,9 +44,14 @@
         <activity
             android:name=".mvp.FlightDetail.FlightDetailActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait"
             android:label="@string/title_activity_flight_detail"
-            android:theme="@style/FullscreenTheme"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".mvp.PhotoViewer.PhotoViewerActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_photo_viewer"
+            android:theme="@style/FullscreenTheme"></activity>
     </application>
 
 </manifest>

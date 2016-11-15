@@ -4,6 +4,9 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -12,9 +15,12 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.porkandlager.travelonbudget.R;
 import com.porkandlager.travelonbudget.wires.Utils;
+import com.porkandlager.travelonbudget.wires.adapters.PhotosWithAttributionAdapter;
 import com.porkandlager.travelonbudget.wires.models.beans.FlightSearch;
+import com.porkandlager.travelonbudget.wires.models.beans.PhotoWithAttribution;
 
 import java.text.NumberFormat;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,6 +38,7 @@ public class FlightDetailActivity extends Activity implements FlightDetailView {
     @BindView(R.id.book_now_dates) TextView flightDetailDates;
     @BindView(R.id.book_now_button) Button bookNowButton;
     @BindView(R.id.flight_detail_context) TextView flightDetailContext;
+    @BindView(R.id.flight_detail_photos_recyclerview) RecyclerView recyclerView;
 
     private FlightDetailPresenter presenter;
 
@@ -94,7 +101,6 @@ public class FlightDetailActivity extends Activity implements FlightDetailView {
                 .into(flightDetailCoverImage);
 
         flightDetailDescription.setText(flightDetail.getContent().getDescription());
-        ((TextView) findViewById(R.id.flight_detail_desc2)).setText(flightDetail.getContent().getDescription());
 
         flightDetailPrice.setText(
                 String.format("IDR %s",
@@ -107,6 +113,31 @@ public class FlightDetailActivity extends Activity implements FlightDetailView {
         bookNowButton.setOnClickListener(view -> {
             presenter.bookNowClicked();
         });
+    }
+
+    @Override
+    public void populateMorePhotos(List<PhotoWithAttribution> photos) {
+        if(photos == null) {
+            Utils.LogE("Null flight search response");
+            return;
+        }
+
+        Utils.LogV("Photos Size: " + photos.size());
+
+        PhotosWithAttributionAdapter adapter = new PhotosWithAttributionAdapter(this);
+        adapter.setPhotos(photos);
+
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3,
+                StaggeredGridLayoutManager.VERTICAL);
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                layoutManager.getOrientation());
+        recyclerView.addItemDecoration(itemDecoration);
+
+        recyclerView.setAdapter(adapter);
     }
 
 }

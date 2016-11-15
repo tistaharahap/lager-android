@@ -1,7 +1,9 @@
 package com.porkandlager.travelonbudget.wires.retrofitter;
 
 import com.porkandlager.travelonbudget.wires.models.acta.Acta;
+import com.porkandlager.travelonbudget.wires.models.requests.FlightDetailImageRequestMeta;
 import com.porkandlager.travelonbudget.wires.models.requests.FlightSearchRequestMeta;
+import com.porkandlager.travelonbudget.wires.models.responses.FlightDetailImageSearchResponse;
 import com.porkandlager.travelonbudget.wires.models.responses.FlightSearchWithBudgetResponse;
 
 import retrofit2.Retrofit;
@@ -22,6 +24,10 @@ public enum ApiService {
 
     public Observable<FlightSearchWithBudgetResponse> searchFlights(Acta<FlightSearchRequestMeta> acta) {
         return travelOnBudgetService.getFlights(acta);
+    }
+
+    public Observable<FlightDetailImageSearchResponse> searchPhotos(Acta<FlightDetailImageRequestMeta> acta) {
+        return travelOnBudgetService.getPhotosFromAirport(acta);
     }
 
     public static ApiService getInstance() {

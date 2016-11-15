@@ -22,4 +22,6 @@ public class Constants {
     public static final String FLIGHT_DETAIL_AIRPORT_OUTBOUND = "flight-detail-airport-outbound";
     public static final String FLIGHT_DETAIL_AIRPORT_INBOUND = "flight-detail-airport-inbound";
 
+    public static final String PHOTO_VIEWER_PHOTO_URL = "photo-viewer-photo-url";
+
 }

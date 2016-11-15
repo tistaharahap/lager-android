@@ -11,5 +11,6 @@ import com.porkandlager.travelonbudget.wires.models.beans.FlightSearch;
 interface FlightDetailInteractor {
 
     FlightSearch buildFlightSearchBeanFromIntent(Intent intent);
+    void requestImages(FlightSearch flightDetail);
 
 }

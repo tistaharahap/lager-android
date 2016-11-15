@@ -58,7 +58,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/white"
+                    android:background="@drawable/bg_rounded_white"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingTop="15dp"
@@ -98,14 +98,13 @@
                         android:textStyle="bold"
                         android:textAllCaps="true"/>
 
-                    <TextView
-                        android:id="@+id/flight_detail_desc2"
-                        android:layout_width="wrap_content"
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/flight_detail_photos_recyclerview"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/flight_detail_places_text"
                         android:layout_marginTop="20dp"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"/>
+                        android:scrollbars="vertical" />
 
                 </RelativeLayout>
 

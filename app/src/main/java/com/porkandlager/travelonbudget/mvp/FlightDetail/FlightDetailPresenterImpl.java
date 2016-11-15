@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 
 import com.porkandlager.travelonbudget.wires.models.beans.FlightSearch;
+import com.porkandlager.travelonbudget.wires.models.responses.FlightDetailImageSearchResponse;
 
 /**
  * Created by tista on 11/15/16.
@@ -17,7 +18,7 @@ class FlightDetailPresenterImpl implements FlightDetailPresenter {
 
     FlightDetailPresenterImpl(FlightDetailView flightDetailView) {
         this.flightDetailView = flightDetailView;
-        this.interactor = new FlightDetailInteractorImpl();
+        this.interactor = new FlightDetailInteractorImpl(this);
     }
 
     @Override
@@ -25,6 +26,7 @@ class FlightDetailPresenterImpl implements FlightDetailPresenter {
         this.flightDetail = interactor.buildFlightSearchBeanFromIntent(intent);
 
         flightDetailView.populateViewsFromFlightDetail(this.flightDetail);
+        interactor.requestImages(this.flightDetail);
     }
 
     @Override
@@ -32,6 +34,11 @@ class FlightDetailPresenterImpl implements FlightDetailPresenter {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(flightDetail.getReferralLink()));
         flightDetailView.getActivity().startActivity(intent);
+    }
+
+    @Override
+    public void showPhotosFromImageSearch(FlightDetailImageSearchResponse response) {
+        flightDetailView.populateMorePhotos(response.getPhotos());
     }
 
 }
