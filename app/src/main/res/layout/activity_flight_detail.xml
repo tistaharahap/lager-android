@@ -44,7 +44,8 @@
                 android:id="@+id/flight_detail_image"
                 android:layout_width="match_parent"
                 android:layout_height="320dp"
-                android:layout_alignParentTop="true"/>
+                android:layout_alignParentTop="true"
+                android:background="@color/tintgray"/>
 
             <RelativeLayout
                 android:id="@+id/flight_detail_content"

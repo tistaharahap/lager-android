@@ -2,7 +2,6 @@ package com.porkandlager.travelonbudget.mvp.FlightDetail;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.nirhart.parallaxscroll.views.ParallaxScrollView;
 import com.porkandlager.travelonbudget.R;
 import com.porkandlager.travelonbudget.wires.Utils;
 import com.porkandlager.travelonbudget.wires.adapters.PhotosWithAttributionAdapter;
@@ -115,7 +115,12 @@ public class FlightDetailActivity extends Activity implements FlightDetailView {
                 layoutManager.getOrientation());
         recyclerView.addItemDecoration(itemDecoration);
 
+        recyclerView.setNestedScrollingEnabled(false);
+
         recyclerView.setAdapter(adapter);
+
+        ((ParallaxScrollView) mContentView).smoothScrollBy(0,
+                getResources().getDimensionPixelSize(R.dimen.flight_detail_wrapper_top_spacing));
     }
 
 }

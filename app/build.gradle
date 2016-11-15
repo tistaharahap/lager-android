@@ -50,7 +50,7 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
         transitive = true;
     }
-    compile 'com.android.support:support-v4:25.0.0'
+
     compile 'com.android.support:support-v4:25.0.1'
     compile 'com.android.support:appcompat-v7:25.0.1'
     compile 'com.github.markushi:circlebutton:1.1'
