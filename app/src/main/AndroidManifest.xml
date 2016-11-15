@@ -29,16 +29,24 @@
             android:name=".mvp.SearchResult.SearchResultActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_search_result"
-            android:screenOrientation="portrait"
             android:parentActivityName=".mvp.Home.HomeActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".mvp.Home.HomeActivity" />
         </activity>
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="ff647ea44a606f93c48b3d8db703a5c35117e815" />
+
+        <activity
+            android:name=".mvp.FlightDetail.FlightDetailActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_flight_detail"
+            android:theme="@style/FullscreenTheme"/>
     </application>
 
 </manifest>

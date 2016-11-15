@@ -36,4 +36,19 @@ public class Content {
         return description;
     }
 
+    public void setWikipediaUrl(String wikipediaUrl) {
+        this.wikipediaUrl = wikipediaUrl;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

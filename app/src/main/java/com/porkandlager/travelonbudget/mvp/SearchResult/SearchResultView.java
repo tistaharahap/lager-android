@@ -11,8 +11,8 @@ import com.porkandlager.travelonbudget.wires.models.responses.FlightSearchWithBu
 public interface SearchResultView {
 
     void initializeRecyclerView(FlightSearchWithBudgetResponse response);
-    void makeFullscreen();
     String humanizeDate(String date);
+    void makeFullscreen();
     Activity getActivity();
 
 }

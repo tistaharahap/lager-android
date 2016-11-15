@@ -22,4 +22,11 @@ public class Airports {
         return destination;
     }
 
+    public void setOrigin(Airport origin) {
+        this.origin = origin;
+    }
+
+    public void setDestination(Airport destination) {
+        this.destination = destination;
+    }
 }

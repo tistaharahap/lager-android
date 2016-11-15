@@ -60,4 +60,28 @@ public class FlightSearch {
     public void setFlightDates(FlightDates flightDates) {
         this.flightDates = flightDates;
     }
+
+    public void setAirports(Airports airports) {
+        this.airports = airports;
+    }
+
+    public void setReferralLink(String referralLink) {
+        this.referralLink = referralLink;
+    }
+
+    public void setInbound(Quote inbound) {
+        this.inbound = inbound;
+    }
+
+    public void setOutbound(Quote outbound) {
+        this.outbound = outbound;
+    }
+
+    public void setCheapestPrice(int cheapestPrice) {
+        this.cheapestPrice = cheapestPrice;
+    }
+
+    public void setContent(Content content) {
+        this.content = content;
+    }
 }

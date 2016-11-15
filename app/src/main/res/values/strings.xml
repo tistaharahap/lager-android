@@ -14,4 +14,11 @@
     <string name="search_result_price_default">IDR 1,000,000</string>
 
     <string name="widget_loading_message">Searching flights..</string>
+
+    <string name="title_activity_flight_detail">FlightDetailActivity</string>
+    <string name="flight_detail_overview">Overview</string>
+    <string name="flight_detail_places">Places To Go</string>
+    <string name="book_now_default_price">IDR 0.0</string>
+    <string name="book_now_default_dates">18 Nov - 20 Nov</string>
+    <string name="book_now_button_text">Book Now</string>
 </resources>

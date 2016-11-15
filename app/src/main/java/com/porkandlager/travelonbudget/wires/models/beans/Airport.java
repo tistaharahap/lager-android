@@ -43,4 +43,23 @@ public class Airport {
         return IataCode;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setIataCode(String iataCode) {
+        IataCode = iataCode;
+    }
 }
