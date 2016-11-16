@@ -14,6 +14,7 @@
     <string name="search_result_price_default">IDR 1,000,000</string>
 
     <string name="widget_loading_message">Searching flights..</string>
+    <string name="redirecting_message">We are redirecting you to Skyscanner to get the best prices.</string>
 
     <string name="title_activity_flight_detail">FlightDetailActivity</string>
     <string name="flight_detail_overview">Overview</string>

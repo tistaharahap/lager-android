@@ -1,7 +1,11 @@
 package com.porkandlager.travelonbudget.mvp.FlightDetail;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.Handler;
+import android.view.LayoutInflater;
 
+import com.porkandlager.travelonbudget.R;
 import com.porkandlager.travelonbudget.wires.models.beans.FlightSearch;
 import com.porkandlager.travelonbudget.wires.models.responses.FlightDetailImageSearchResponse;
 import com.tfc.webviewer.ui.WebViewerActivity;
@@ -31,11 +35,28 @@ class FlightDetailPresenterImpl implements FlightDetailPresenter {
 
     @Override
     public void bookNowClicked() {
-        Intent intent = new Intent(flightDetailView.getActivity(),
-                WebViewerActivity.class);
-        intent.putExtra(WebViewerActivity.EXTRA_URL,
-                flightDetail.getReferralLink());
-        flightDetailView.getActivity().startActivity(intent);
+        AlertDialog.Builder builder = new AlertDialog.Builder(flightDetailView.getActivity());
+        LayoutInflater inflater = flightDetailView.getActivity().getLayoutInflater();
+
+        AlertDialog dialog = builder
+                .setView(inflater.inflate(R.layout.dialog_redirecting, null))
+                .setCancelable(false)
+                .create();
+        dialog.show();
+
+        // Delay this to show the user the dialog content
+        final Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            if(dialog.isShowing()) {
+                dialog.cancel();
+            }
+
+            Intent intent = new Intent(flightDetailView.getActivity(),
+                    WebViewerActivity.class);
+            intent.putExtra(WebViewerActivity.EXTRA_URL,
+                    flightDetail.getReferralLink());
+            flightDetailView.getActivity().startActivity(intent);
+        }, 1500);
     }
 
     @Override
