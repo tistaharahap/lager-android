@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.porkandlager.travelonbudget.R;
 import com.porkandlager.travelonbudget.mvp.FlightDetail.FlightDetailActivity;
 import com.porkandlager.travelonbudget.wires.Constants;
+import com.porkandlager.travelonbudget.wires.Utils;
 import com.porkandlager.travelonbudget.wires.models.beans.FlightSearch;
 
 import java.text.NumberFormat;
@@ -50,9 +51,9 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         final FlightSearch flight = flights.get(position);
 
-        String destination = String.format("%s, %s",
+        String destination = Utils.capitalizeFirstWords(String.format("%s, %s",
                 flight.getAirports().getDestination().getCity(),
-                flight.getAirports().getDestination().getCountry());
+                flight.getAirports().getDestination().getCountry()));
 
         holder.searchResultDestination.setText(destination);
         holder.searchResultPrice.setText(String.format("IDR %s",

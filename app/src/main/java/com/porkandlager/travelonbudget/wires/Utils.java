@@ -45,4 +45,16 @@ public class Utils {
         }
     }
 
+    public static String capitalizeFirstWords(String string) {
+        String[] stringArray = string.split(" ");
+        StringBuilder builder = new StringBuilder();
+        for(String s : stringArray) {
+            String cap = s.substring(0, 1).toUpperCase() + s.substring(1);
+            builder.append(cap);
+            builder.append(" ");
+        }
+
+        return builder.toString();
+    }
+
 }
