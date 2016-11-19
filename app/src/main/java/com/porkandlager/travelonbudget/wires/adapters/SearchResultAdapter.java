@@ -50,7 +50,11 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         final FlightSearch flight = flights.get(position);
 
-        holder.searchResultDestination.setText(flight.getAirports().getDestination().getCity());
+        String destination = String.format("%s, %s",
+                flight.getAirports().getDestination().getCity(),
+                flight.getAirports().getDestination().getCountry());
+
+        holder.searchResultDestination.setText(destination);
         holder.searchResultPrice.setText(String.format("IDR %s",
                 NumberFormat.getInstance().format(flight.getCheapestPrice())));
 
