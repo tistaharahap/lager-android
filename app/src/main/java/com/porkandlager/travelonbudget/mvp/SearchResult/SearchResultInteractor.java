@@ -11,7 +11,9 @@ import com.porkandlager.travelonbudget.wires.models.responses.FlightSearchWithBu
 interface SearchResultInteractor {
 
     void searchFlights(String budget);
+    void searchFlights(String budget, String outboundDate, String inboundDate);
     void onSearchResultSuccess(FlightSearchWithBudgetResponse response);
     Acta<FlightSearchRequestMeta> buildActaObject(String budget);
+    Acta<FlightSearchRequestMeta> buildActaObject(String budget, String outboundDate, String inboundDate);
 
 }

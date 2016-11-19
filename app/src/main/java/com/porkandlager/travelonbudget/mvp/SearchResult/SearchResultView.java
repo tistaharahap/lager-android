@@ -14,5 +14,7 @@ public interface SearchResultView {
     String humanizeDate(String date);
     void makeFullscreen();
     Activity getActivity();
+    void showDatepicker(String currentDate, boolean isOutbound);
+    void onDateSelected(boolean isOutbound, int year, int month, int day);
 
 }

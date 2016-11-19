@@ -24,4 +24,11 @@
     <string name="book_now_button_text">Book Now</string>
 
     <string name="title_activity_photo_viewer">PhotoViewerActivity</string>
+
+    <string name="outbound_date">Outbound Date</string>
+    <string name="outbound_date_default">18 Nov 2016</string>
+    <string name="inbound_date">Inbound Date</string>
+    <string name="inbound_date_default">20 Nov 2016</string>
+    <string name="budget">Budget</string>
+    <string name="change">Change</string>
 </resources>

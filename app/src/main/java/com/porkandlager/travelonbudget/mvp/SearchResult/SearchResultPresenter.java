@@ -9,6 +9,7 @@ import com.porkandlager.travelonbudget.wires.models.responses.FlightSearchWithBu
 interface SearchResultPresenter {
 
     void searchFlights(String budget);
+    void searchFlights(String budget, String outboundDate, String inboundDate);
     void onSearchResultSuccess(FlightSearchWithBudgetResponse response);
 
 }

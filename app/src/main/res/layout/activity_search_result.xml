@@ -43,6 +43,96 @@
             android:layout_below="@id/search_context_bar"
             android:scrollbars="vertical" />
 
+        <TableLayout
+            android:id="@+id/search_options"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_below="@id/search_context_bar"
+            android:background="@color/apptheme_color">
+
+            <TableRow
+                android:id="@+id/row_outbound_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/outbound_date_label"
+                    android:text="@string/outbound_date"
+                    android:textColor="@android:color/white"
+                    android:layout_weight="0.1"/>
+
+                <TextView
+                    android:id="@+id/outbound_date_value"
+                    android:background="@android:color/white"
+                    android:text="@string/outbound_date_default"
+                    android:textColor="@color/black"
+                    android:padding="5dp"
+                    android:layout_weight="0.9"/>
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row_inbound_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/inbound_date_label"
+                    android:text="@string/inbound_date"
+                    android:textColor="@android:color/white"
+                    android:layout_weight="0.1"/>
+
+                <TextView
+                    android:id="@+id/inbound_date_value"
+                    android:background="@android:color/white"
+                    android:text="@string/inbound_date_default"
+                    android:textColor="@color/black"
+                    android:padding="5dp"
+                    android:layout_weight="0.9"/>
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row_budget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/budget_label"
+                    android:text="@string/budget"
+                    android:textColor="@android:color/white"
+                    android:layout_weight="0.1"/>
+
+                <TextView
+                    android:id="@+id/budget_value"
+                    android:text="@string/budget_default_text"
+                    android:textColor="@android:color/white"
+                    android:padding="5dp"
+                    android:layout_weight="0.9"/>
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp">
+
+                <Button
+                    android:id="@+id/submit_button"
+                    android:layout_weight="1"
+                    android:text="@string/change" />
+
+            </TableRow>
+
+        </TableLayout>
+
     </RelativeLayout>
 
     <!-- This FrameLayout insets its children based on system windows using

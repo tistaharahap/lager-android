@@ -24,4 +24,10 @@ public class Constants {
 
     public static final String PHOTO_VIEWER_PHOTO_URL = "photo-viewer-photo-url";
 
+    public static final String SEARCH_DATE_PICKER_FRAGMENT_YEAR = "search-date-picker-fragment-year";
+    public static final String SEARCH_DATE_PICKER_FRAGMENT_MONTH = "search-date-picker-fragment-month";
+    public static final String SEARCH_DATE_PICKER_FRAGMENT_DAY = "search-date-picker-fragment-day";
+    public static final String SEARCH_DATE_PICKER_FRAGMENT_IS_OUTBOUND = "search-date-picker-fragment-is-outbound";
+    public static final String SEARCH_DATE_PICKER_FRAGMENT_TAG = "search-date-picker-fragment-tag";
+
 }

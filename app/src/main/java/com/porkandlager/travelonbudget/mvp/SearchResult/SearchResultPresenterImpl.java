@@ -27,6 +27,16 @@ class SearchResultPresenterImpl implements SearchResultPresenter {
     }
 
     @Override
+    public void searchFlights(String budget, String outboundDate, String inboundDate) {
+        budget = budget
+                .replace(".", "")
+                .replace(",", "")
+                .replace("IDR ", "");
+
+        interactor.searchFlights(budget ,outboundDate, inboundDate);
+    }
+
+    @Override
     public void onSearchResultSuccess(FlightSearchWithBudgetResponse response) {
         searchResultView.initializeRecyclerView(response);
     }
