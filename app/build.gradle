@@ -8,10 +8,12 @@ buildscript {
     }
 }
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 apply plugin: 'io.fabric'
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
+    mavenCentral()
 }
 
 apply plugin: 'me.tatarka.retrolambda'
@@ -23,8 +25,8 @@ android {
         applicationId "com.porkandlager.travelonbudget"
         minSdkVersion 17
         targetSdkVersion 25
-        versionCode 10
-        versionName "1.0"
+        versionCode 11
+        versionName "1.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -49,6 +51,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
     }
 }
 
@@ -81,4 +86,5 @@ dependencies {
     compile 'com.github.fobid:webviewer:0.70.4'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
