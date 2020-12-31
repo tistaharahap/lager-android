@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="25dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_centerInParent="true">
+
+        <ProgressBar
+            android:id="@+id/widget_loading_pb"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/widget_loading_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/widget_loading_pb"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="@string/widget_loading_message"
+            android:textColor="@color/almost_black"/>
+
+        <ImageView
+            android:id="@+id/widget_skyscanner"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/widget_loading_text"
+            android:src="@drawable/skyscanner"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

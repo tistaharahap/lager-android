@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Travel On Budget</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="whats_your_budget">What\'s your budget?</string>
+    <string name="budget_default_text">IDR 1.500.000</string>
+    <string name="go">Go!</string>
+    <string name="searching">Searching..</string>
+
+    <string name="title_activity_search_result">SearchResultActivity</string>
+    <string name="search_result_destination_default">Destination</string>
+    <string name="search_result_price_default">IDR 1,000,000</string>
+
+    <string name="widget_loading_message">Searching flights..</string>
+    <string name="redirecting_message">We are redirecting you to Skyscanner to get the best prices.</string>
+
+    <string name="title_activity_flight_detail">FlightDetailActivity</string>
+    <string name="flight_detail_overview">Overview</string>
+    <string name="flight_detail_places">Photos</string>
+    <string name="book_now_default_price">IDR 0.0</string>
+    <string name="book_now_default_dates">18 Nov - 20 Nov</string>
+    <string name="book_now_button_text">Book Now</string>
+
+    <string name="title_activity_photo_viewer">PhotoViewerActivity</string>
+
+    <string name="outbound_date">Outbound Date</string>
+    <string name="outbound_date_default">18 Nov 2016</string>
+    <string name="inbound_date">Inbound Date</string>
+    <string name="inbound_date_default">20 Nov 2016</string>
+    <string name="budget">Budget</string>
+    <string name="change">Change</string>
+</resources>

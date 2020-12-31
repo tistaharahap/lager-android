@@ -1,0 +1,158 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".mvp.SearchResult.SearchResultActivity">
+
+    <RelativeLayout
+        android:id="@+id/fullscreen_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <include layout="@layout/widget_loading"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+        <RelativeLayout
+            android:id="@+id/search_context_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="@color/apptheme_color">
+
+            <TextView
+                android:id="@+id/search_context_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/searching"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"/>
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/search_result_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/search_context_bar"
+            android:scrollbars="vertical" />
+
+        <TableLayout
+            android:id="@+id/search_options"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_below="@id/search_context_bar"
+            android:background="@color/apptheme_color">
+
+            <TableRow
+                android:id="@+id/row_outbound_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/outbound_date_label"
+                    android:text="@string/outbound_date"
+                    android:textColor="@android:color/white"
+                    android:layout_weight="0.1"/>
+
+                <TextView
+                    android:id="@+id/outbound_date_value"
+                    android:background="@android:color/white"
+                    android:text="@string/outbound_date_default"
+                    android:textColor="@color/black"
+                    android:padding="5dp"
+                    android:layout_weight="0.9"/>
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row_inbound_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/inbound_date_label"
+                    android:text="@string/inbound_date"
+                    android:textColor="@android:color/white"
+                    android:layout_weight="0.1"/>
+
+                <TextView
+                    android:id="@+id/inbound_date_value"
+                    android:background="@android:color/white"
+                    android:text="@string/inbound_date_default"
+                    android:textColor="@color/black"
+                    android:padding="5dp"
+                    android:layout_weight="0.9"/>
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row_budget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/budget_label"
+                    android:text="@string/budget"
+                    android:textColor="@android:color/white"
+                    android:layout_weight="0.1"/>
+
+                <TextView
+                    android:id="@+id/budget_value"
+                    android:text="@string/budget_default_text"
+                    android:textColor="@android:color/white"
+                    android:padding="5dp"
+                    android:layout_weight="0.9"/>
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp">
+
+                <Button
+                    android:id="@+id/submit_button"
+                    android:layout_weight="1"
+                    android:text="@string/change" />
+
+            </TableRow>
+
+        </TableLayout>
+
+    </RelativeLayout>
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:id="@+id/fullscreen_content_controls"
+            style="?metaButtonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+        </LinearLayout>
+    </FrameLayout>
+
+</FrameLayout>
